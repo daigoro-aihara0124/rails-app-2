@@ -1,0 +1,17 @@
+
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+  <% end %>
+
+<div class="wrapper">
+　<div class="main-image">
+  　<div class="form-area">
+    　<p class="form-area-title mb-4">Potepan Journeyで日本を旅しよう</p>
+     　<form action="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search" accept-charset="UTF-8" method="get">
+      　<label for="___">エリア</label>
+      　<input type="text" name="area" id="area" value="" class="form-control mb-4" placeholder="東京">
+      　<input type="submit" name="commit" value="探す" class="form-control btn-primary mb-4" data-disable-with="探す">
+    　</form>
+  　</div>
+　</div>
+</div>

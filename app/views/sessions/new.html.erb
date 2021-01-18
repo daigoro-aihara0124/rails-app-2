@@ -1,0 +1,22 @@
+
+<%= form_with url: login_path, local: true do |f| %>
+  <div class="form-input">
+    <h3>ログイン</h3>
+    <table>
+        <tr>
+            <th><%= f.label :email ,"メールアドレス" %></th>
+            <td><%= f.email_field :email %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :password_digest ,"パスワード" %></th>
+            <td><%= f.password_field :password_digest %></td>
+        </tr>
+    </table>
+    <div>
+        <ul>
+            <li><%= f.submit "ログイン"%></li>
+            <li><%= link_to "新規登録", :new_user %></li>
+        </ul>
+    </div>
+  </div>
+<% end %>
