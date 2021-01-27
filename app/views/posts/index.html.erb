@@ -1,0 +1,33 @@
+
+
+<div class="form-input">
+<h2>登録済み部屋一覧</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ルーム画像</th>
+            <th>ルーム名</th>
+            <th>ルーム紹介</th>
+            <th>料金</th>
+            <th>作成日</th>
+            <th>投稿者(user_id)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @posts.each do |post| %>
+            <tr>
+                <% if post.image? %>
+                <td><%= image_tag post.image.thumb50.url %></td>
+                <% end %>
+                <td><%= post.name %></td>
+                <td><%= post.introduction %></td>
+                <td><%= post.fee %></td>
+                <td><%= post.created_at.to_s(:datetime_jp) %></td>
+                <td><%= post.user_id %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>

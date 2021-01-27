@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
   def create
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password_digest])
-      session[:user_id] = @user.id
+      log_in @user
       flash[:notice] = "ログインが完了しました"
       redirect_to :users
     else

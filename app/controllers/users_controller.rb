@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
+    @posts = Post.all
   end
+
 
   def new
     @user = User.new
@@ -11,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction))
     @user.image_name = "default_user.jpeg"
     if @user.save
-      session[:user_id] = @user.id
+      log_in @user
       flash[:notice] = "ユーザーを新規登録しました"
       redirect_to :users
     else
@@ -21,6 +24,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @post = Post.new
   end
 
   def edit
