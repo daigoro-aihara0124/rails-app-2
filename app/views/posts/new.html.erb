@@ -24,6 +24,7 @@
     <td><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></td>
   </tr>
 </table>
+<%= f.hidden_field :user_id, value: current_user.id %>
 <div>
   <ul>
     <li><%= f.submit "ルーム情報を登録する"%></li>

@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate, only: [:new, :create]
+
 
   def index
     @posts = Post.all
-    @users = User.all
   end
 
   def new
@@ -10,19 +11,19 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:name, :introduction, :fee, :address, :image, :user_id))
-    @post.user_id = current_user.id
+    @post = Post.new(post_params)
+    @post.user_id = @current_user.id
     if @post.save
-      flash[:notice] = "「#{@post.user_id}」のルーム登録をしました"
-      redirect_to :users
+      flash[:notice] = "ユーザーID「#{@post.user_id}」のルーム登録をしました"
+      redirect_to post_path(@post)
     else
-      render "posts/new"
+      redirect_to new_post_path
     end
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
-    @user = User.find_by(id: @post.user_id)
+    @post = Post.find(params[:id])
+    @posts = @current_user.posts
   end
 
   def edit
@@ -33,4 +34,9 @@ class PostsController < ApplicationController
 
   def destroy
   end
-end
+
+  private
+  def post_params
+    params.require(:post).permit(:name, :introduction, :fee, :address, :image)
+  end
+ end

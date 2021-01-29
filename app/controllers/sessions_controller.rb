@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password_digest])
-      log_in @user
+      session[:user_id] = @user.id
       flash[:notice] = "ログインが完了しました"
-      redirect_to :users
+      redirect_to user_path(@user)
     else
       flash.now[:alert] = "メールアドレスまたはパスワードが間違っています"
-      render :new
+      redirect_to new_session_path
     end
   end
 

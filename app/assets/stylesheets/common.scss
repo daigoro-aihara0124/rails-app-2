@@ -177,6 +177,24 @@ div li {
   padding-top: 10px;
 }
 
+//ログイン後画面、ヘッダー
+
+.nav-item li {
+  list-style: none;
+}
+
+
+.nav-item .current_user_item {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  text-decoration: none
+}
+
+
+
+
+
 //ユーザー詳細画面
 .logout-botton {
   padding-top: 10px;

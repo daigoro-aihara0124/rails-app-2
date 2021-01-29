@@ -1,6 +1,10 @@
 
+<div class="welcome-messeage">
+ <h1>ようこそ</h1>
+</div>
+
 <div class="form-input">
-<h2>登録済みルーム一覧</h2>
+<h2>マイルーム一覧</h2>
 
 <table>
     <thead>
@@ -15,6 +19,7 @@
     </thead>
 
     <tbody>
+        <% if @posts.present? %>
         <% @posts.each do |post| %>
             <tr>
                 <% if post.image? %>
@@ -26,6 +31,7 @@
                 <td><%= post.created_at.to_s(:datetime_jp) %></td>
                 <td><%= post.user_id %></td>
             </tr>
+        <% end %>
         <% end %>
     </tbody>
 </table>
