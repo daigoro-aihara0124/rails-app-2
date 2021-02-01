@@ -1,0 +1,40 @@
+
+<div class="form-input">
+<h2>予約済みルーム一覧</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ルームid</th>
+            <th>ルーム画像</th>
+            <th>ルーム名</th>
+            <th>ルーム紹介</th>
+            <th>合計料金</th>
+            <th>開始日</th>
+            <th>終了日</th>
+            <th>人数</th>
+            <th>日数</th>
+            <th>予約確定日時</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @reservations.each do |reservation| %>
+            <tr>
+                <td><%= reservation.post.id %></td>
+                <% if reservation.post.image? %>
+                <td><%= image_tag reservation.post.image.thumb50.url %></td>
+                <% end %>
+                <td><%= reservation.post.name %></td>
+                <td><%= reservation.post.introduction %></td>
+                <td>¥<%= reservation.post.fee * ((reservation.end_date.to_date - reservation.start_date.to_date).to_i) * (reservation.num_people) %></td>
+                <td><%= reservation.start_date %></td>
+                <td><%= reservation.end_date %></td>
+                <td><%= reservation.num_people %>名</td>
+                <td><%= (reservation.end_date.to_date - reservation.start_date.to_date).to_i %>日間</td>
+                <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>

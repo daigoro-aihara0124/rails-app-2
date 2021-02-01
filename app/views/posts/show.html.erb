@@ -9,12 +9,16 @@
 <table>
     <thead>
         <tr>
+            <th>id</th>
             <th>ルーム画像</th>
             <th>ルーム名</th>
             <th>ルーム紹介</th>
             <th>料金</th>
+            <th>住所</th>
             <th>作成日</th>
             <th>登録者(ユーザーid)</th>
+            <th>編集</th>
+
         </tr>
     </thead>
 
@@ -22,14 +26,19 @@
         <% if @posts.present? %>
         <% @posts.each do |post| %>
             <tr>
+                <td><%= post.id %></td>
                 <% if post.image? %>
                 <td><%= image_tag post.image.thumb50.url %></td>
                 <% end %>
                 <td><%= post.name %></td>
                 <td><%= post.introduction %></td>
                 <td><%= post.fee %></td>
+                <td><%= post.address %></td>
                 <td><%= post.created_at.to_s(:datetime_jp) %></td>
                 <td><%= post.user_id %></td>
+                <td>
+                    <%= link_to "編集", edit_post_path(post.id) %>
+                </td>
             </tr>
         <% end %>
         <% end %>

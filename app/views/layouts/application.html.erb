@@ -21,10 +21,12 @@
           <li>
            現在ログインしているユーザーのID: <%= session[:user_id] %>
           </li>
-            <%= link_to "マイページ","/users/#{current_user.id}",class:'current_user_item' %>
+            <%= link_to "マイページ", user_path(current_user.id),class:'current_user_item' %>
             <%= link_to "ルーム登録", "/posts/new/",class:'current_user_item' %>
             <%= link_to "登録済みルーム一覧", posts_path,class:'current_user_item' %>
-            <%= link_to "マイルーム一覧", "/posts/#{current_user.id}",class:'current_user_item' %>
+            <%= link_to "マイルーム一覧", post_path(current_user.id),class:'current_user_item' %>
+            <%= link_to "予約済みルーム一覧", reservations_path,class:'current_user_item' %>
+            <%= link_to "あなたが予約したルーム", reservation_path(current_user.id),class:'current_user_item' %>
          <% else %>
             <a class="btn btn-primary my-2 mx-3" href="/sessions/new">ログイン</a>
             <a class="btn btn-secondary" href="/users/new">新規登録</a>

@@ -27,9 +27,17 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(params.require(:post).permit(:name, :introduction, :fee, :address, :image, :user_id))
+      flash[:notice] = "ルームの編集をしました"
+      redirect_to post_path(@post)
+    else
+      redirect_to edit_post_path(@post)
+    end
   end
 
   def destroy
@@ -37,6 +45,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:name, :introduction, :fee, :address, :image)
+    params.require(:post).permit(:name, :introduction, :fee, :address, :image, :user_id)
   end
  end

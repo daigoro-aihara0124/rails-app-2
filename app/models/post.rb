@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   mount_uploader :image, RoomImageUploader
 
   belongs_to :user
+  has_many :reservations
 
   validates :name, presence: true
   validates :introduction, presence: true
