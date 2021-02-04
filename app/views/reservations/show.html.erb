@@ -1,6 +1,14 @@
 
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+<% end %>
+
+<div class="welcome-messeage">
+ <h1>ようこそ予約したルームへ</h1>
+</div>
+
 <div class="form-input">
-<h2>あなたが予約したルーム一覧</h2>
+<h3>あなたが予約したルーム一覧</h3>
 
 <table>
     <thead>
@@ -24,7 +32,7 @@
             <tr>
                 <td><%= reservation.post.id %></td>
                 <% if reservation.post.image? %>
-                <td><%= image_tag reservation.post.image.thumb50.url %></td>
+                <td><%= image_tag reservation.post.image.thumb.url %></td>
                 <% end %>
                 <td><%= reservation.post.name %></td>
                 <td><%= reservation.post.introduction %></td>

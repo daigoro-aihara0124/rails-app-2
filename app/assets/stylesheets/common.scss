@@ -1,3 +1,5 @@
+
+//コンテンツ全体
 * {
   margin: 0px;
   padding: 0px;
@@ -7,44 +9,42 @@ html,body {
   height: 100%;
 }
 
+.wrapper {
+  position: relative;
+}
+
+.wrap {
+  overflow: hidden;
+}
+
+.container {
+  min-height: calc(100vh - 70px);
+}
+
+.content {
+  padding: 150px 0 0 0;
+}
+
+//ヘッダー
 header {
   width: 100%;
-  padding: 10px;
+  padding-bottom: 30px;
   background: #545d55;
   color: #fff;
   margin: 0px;
   position: relative;
-  height:100px;
+  height:150px;
+  position: fixed;
+  z-index: 9999;
 }
 
-footer {
-  width: 100%;
-  height: 100px;
-  background: #545d55;
-  color: #fff;
-  text-align: center;
-  position: absolute;
-  bottom: 0px;
-  margin-bottom: -1000px;
-}
-
-
-
-header h2 a {
-  font-family: fantasy;
-  font-size: 40px;
-  position: absolute;
-  top:20px;
-  text-decoration: none;
-  color: #fff;
-}
-
-header .nav-item {
+//新規登録・ログイン
+header .new-user_form {
   display: inline-block;
   color: #fff;
   font-size: 14px;
   position: absolute;
-  top:30px;
+  top:40px;
   right:20px;
 }
 
@@ -83,70 +83,187 @@ header .nav-item {
 }
 
 
-.wrapper {
-  position: relative;
+//ヘッダートップシンボル
+
+header h2 a {
+  font-family: fantasy;
+  font-size: 40px;
+  position: absolute;
+  top:40px;
+  text-decoration: none;
+  color: #fff;
 }
 
-*, ::after, ::before {
-    box-sizing: border-box;
+//ヘッダーログインユーザー
+.current_user-item li {
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+  position: absolute;
+  top:30px;
+  right:200px;
+  text-decoration: none;
+  font-size: 20px;
 }
 
-.main-image {
-  background-image: url(https://www.pakutaso.com/shared/img/thumb/unific7017DSC09978_TP_V.jpg);
-  background-size: cover;
-  width: 100%;
-  height: 700px;
-}
 
-.main-image .form-area {
-  background: rgba(#ffffff, 0.56);
-  padding: 24px;
-  border-radius: 5px;
-  width: 40%;
-  margin-top: 10px;
+//ヘッダー、ハンバーガーメニュー
+.menu-btn {
+    position: fixed;
+    top: 40px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #3584bb;
 }
-
-.main-image .form-area-title {
-  font-size: 28px;
-  line-height: 20px;
-  letter-spacing: 1px;
-}
-
-label {
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
     display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #C0C0C0;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
 }
 
-.mb-4, .my-4 {
-    margin-bottom: 1.5rem!important;
+#menu-btn-check {
+  display: none;
 }
 
-.form-control {
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);
+
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+
+}
+
+#menu-btn-check:checked ~ .menu-content {
+  left: 80%;
+}
+
+.menu-content {
+    width: 20%;
+    height: 60%;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 80;
+    background-color: #808080;
+    transition: all 0.5s;
+}
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+.menu-content ul li a {
     display: block;
     width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057!important;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    font-size: 15px;
+    box-sizing: border-box;
+    color:#ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+}
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+
+//ヘッダー、検索フォーム
+header .header-left-item {
+  position: absolute;
+  left:300px;
+  top:50px;
+  padding-left: 30px;
+}
+
+header .header-left-item  {
+  position: relative;
+  border-radius: 2px;
+  padding-left: 30px;
 }
 
 
+.topleft-input {
+  width: 200px;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
+
+//フッター
+footer {
+  width: 100%;
+  height: 150px;
+  background: #545d55;
+  color: #fff;
+}
+
+
+footer p {
+text-align: center;
+padding: 40px 0px;
+font-size: 20px;
+}
+
+//user,post,reservation,共通
 .form-input {
   text-align: center;
+  padding: 20px;
+}
+
+.form-input h1 {
+  text-align: center;
+  padding: 20px 0px;
 }
 
 .form-input h3 {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  font-size: 30px;
+  padding-top: 70px;
+  padding-bottom: 40px;
 }
 
+//テーブル共通
 table {
   margin: auto;
   border-collapse: collapse;
@@ -154,7 +271,7 @@ table {
 
 table th {
     background-color: rgba(#756c5d, 0.8);
-    padding: 10px 20px;
+    padding: 20px 20px;
     border: solid 1px black;
 }
 
@@ -164,42 +281,83 @@ table td {
     border: solid 1px black;
 }
 
+table tr td {
+  text-align: center;
+}
+
+//notice
 .notice {
     background-color: #ccf;
     padding: 5px;
+    width:700px;
+    text-align: center;
+    font-size: 15px;
 }
 
-div ul  {
+//完了ボタン共通
+div ul {
   padding-top: 10px;
-}
-
-div li {
-  padding-top: 10px;
-}
-
-//ログイン後画面、ヘッダー
-
-.nav-item li {
   list-style: none;
 }
 
+div li {
+  padding-top: 20px;
 
-.nav-item .current_user_item {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-  text-decoration: none
 }
 
+//マイページ共通
+ .welcome-messeage {
+   position: absolute;
+   top: 200px;
+   left: 30px;
+ }
+
+//user共通
+ .image_p {
+   padding-bottom: 20px;
+ }
+
+ .users-content {
+   width: 300px;
+   height: 200px;
+   font-size: 20px;
+   letter-spacing: 2px;
+   padding: 5px;
+ }
+
+ .imput-box {
+   font-size: 20px;
+   letter-spacing: 2px;
+   width: 300px;
+   padding: 5px;
+ }
 
 
+ .new_account {
+   font-size: 20px;
+   text-decoration: none;
+ }
 
-
-//ユーザー詳細画面
+//session
 .logout-botton {
   padding-top: 10px;
   text-align: center;
 }
+
+//編集ボタン
+.edit_item {
+  text-decoration: none;
+  font-size: 20px;
+  color: #800080;
+}
+
+//ログアウトボタン
+.logout_item {
+  text-decoration: none;
+  font-size: 20px;
+  color: #F00;
+}
+
 
 //ルーム登録画面
 .posts-content {

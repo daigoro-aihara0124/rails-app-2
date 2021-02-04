@@ -7,11 +7,39 @@
 　<div class="main-image">
   　<div class="form-area">
     　<p class="form-area-title mb-4">Potepan Journeyで日本を旅しよう</p>
-     　<form action="https://presite-potepancamp-rails-02.herokuapp.com/rooms/search" accept-charset="UTF-8" method="get">
-      　<label for="___">エリア</label>
-      　<input type="text" name="area" id="area" value="" class="form-control mb-4" placeholder="東京">
-      　<input type="submit" name="commit" value="探す" class="form-control btn-primary mb-4" data-disable-with="探す">
-    　</form>
+      <%= form_with( url: search_path, class: 'search_form', method: :get, local:true) do |f| %>
+      <%= f.text_field :keyword,  placeholder: "エリアを入力", class: "topleft-input"%>
+      <%= f.submit '検索'%>
+    <% end %>
   　</div>
 　</div>
+</div>
+<div class = area-wrapper>
+  <h2>おすすめのエリア</h2>
+  <div class = areas>
+    <div class = area>
+      <div class = area-image>
+        <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg" alt="tokyo">
+        <p><%= link_to "東京", "/search?keyword=東京&commit=探す", class: "area_name" %></p>
+      </div>
+    </div>
+    <div class = area>
+      <div class = area-image>
+        <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg" alt="osaka">
+        <p><%= link_to "大阪", "/search?keyword=大阪&commit=探す", class: "area_name" %></p>
+      </div>
+    </div>
+    <div class = area>
+      <div class = area-image>
+        <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg" alt="kyoto">
+        <p><%= link_to "京都", "/search?keyword=京都&commit=探す", class: "area_name" %></p>
+      </div>
+    </div>
+    <div class = area>
+      <div class = area-image>
+        <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg" alt="sapporo">
+        <p><%= link_to "札幌", "/search?keyword=札幌&commit=探す", class: "area_name" %></p>
+      </div>
+    </div>
+  </div>
 </div>

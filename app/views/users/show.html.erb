@@ -1,15 +1,19 @@
 <div class="welcome-messeage">
- <h1>ようこそ</h1>
+ <h1>ようこそマイページへ</h1>
 </div>
-
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+  <% end %>
 <%= form_for @user do |f| %>
   <div class="form-input">
     <h3>プロフィール</h3>
+    <div class= image_p>
      <% if @user.image_name? %>
       <%= image_tag @user.image_name.thumb50.url %>
      <% else %>
         <%= image_tag "/user_images/default_user.jpeg", :size => '100x100' %>
      <% end %>
+    </div>
     <table>
         <tr>
             <th><%= f.label :name ,"ユーザー名" %></th>
@@ -23,15 +27,14 @@
             <th><%= f.label :introduction ,"自己紹介" %></th>
             <td><%= @user.introduction %></td>
         </tr>
-
     </table>
     <div>
         <ul>
-            <li><%= link_to "アカウント編集", :edit_user %></li>
+            <li><%= link_to "アカウント編集", :edit_user, class:'edit_item' %></li>
         </ul>
     </div>
   </div>
 <% end %>
 <div class="logout-botton">
- <%= link_to "ログアウト", logout_path, method: :delete %>
+ <%= link_to "ログアウト", logout_path, method: :delete, class:'logout_item' %>
 </div>

@@ -40,6 +40,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    if params[:keyword].present?
+      @posts = Post.where('name LIKE ? OR address LIKE ? ', "%#{params[:keyword]}%","%#{params[:keyword]}%" )
+    else
+      @posts = Post.none
+    end
+  end
+
   def destroy
   end
 

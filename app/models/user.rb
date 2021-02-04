@@ -9,6 +9,10 @@ class User < ApplicationRecord
                        allow_blank: true
   mount_uploader :image_name, ImageUploader
 
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :introduction, presence: true
+
   has_many :posts, dependent: :destroy
   has_many :reservations, dependent: :destroy
 end

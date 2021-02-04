@@ -1,6 +1,6 @@
 
 <div class="form-input">
-<h2>予約済みルーム一覧</h2>
+<h3>予約済みルーム一覧</h3>
 
 <table>
     <thead>
@@ -15,6 +15,7 @@
             <th>人数</th>
             <th>日数</th>
             <th>予約確定日時</th>
+            <th>予約者</th>
         </tr>
     </thead>
 
@@ -23,7 +24,7 @@
             <tr>
                 <td><%= reservation.post.id %></td>
                 <% if reservation.post.image? %>
-                <td><%= image_tag reservation.post.image.thumb50.url %></td>
+                <td><%= image_tag reservation.post.image.thumb.url %></td>
                 <% end %>
                 <td><%= reservation.post.name %></td>
                 <td><%= reservation.post.introduction %></td>
@@ -33,6 +34,7 @@
                 <td><%= reservation.num_people %>名</td>
                 <td><%= (reservation.end_date.to_date - reservation.start_date.to_date).to_i %>日間</td>
                 <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+                <td><%= reservation.user.name %></td>
             </tr>
         <% end %>
     </tbody>

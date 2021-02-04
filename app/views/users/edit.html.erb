@@ -2,25 +2,27 @@
 <div class="form-input">
 
   <h3>アカウント編集</h3>
+  <div class= image_p>
   <% if @user.image_name? %>
    <%= image_tag @user.image_name.thumb50.url %>
   <% else %>
      <%= image_tag "/user_images/default_user.jpeg", :size => '100x100' %>
   <% end %>
+  </div>
   <table>
     <tr>
       <th><%= f.label :name ,"ユーザー名" %></th>
-      <td><%= f.text_field :name %></td>
+      <td><%= f.text_field :name, class:"imput-box" %></td>
     </tr>
     <tr>
       <th><%= f.label :image_name ,"ユーザー画像" %></th>
       <td><%= f.file_field :image_name, accept: 'image_name/jpeg,image_name/gif,image_name/png' %></td>
     </tr>
     <th><%= f.label :email ,"メールアドレス" %></th>
-    <td><%= f.email_field :email %></td>
+    <td><%= f.email_field :email, class:"imput-box" %></td>
     <tr></tr>
     <th><%= f.label :introduction ,"自己紹介" %></th>
-    <td><%= f.text_area :introduction %></td>
+    <td><%= f.text_area :introduction, class:"users-content"  %></td>
     <tr></tr>
   </table>
   <div>

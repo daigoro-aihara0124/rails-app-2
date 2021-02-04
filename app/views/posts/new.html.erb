@@ -1,23 +1,24 @@
 
+
 <%= form_for @post do |f| %>
 <div class="form-input">
-<h2>ルーム登録フォーム</h2>
+<h3>ルーム登録フォーム</h3>
 <table>
   <tr>
     <th><%= f.label :name, "ルーム名" %></th>
-    <td><%= f.text_field :name %></td>
+    <td><%= f.text_field :name, class:"imput-box" %></td>
   </tr>
   <tr>
     <th><%= f.label :introduction, "ルーム紹介" %></th>
-    <td><%= f.text_area :introduction, class:"posts-content" %></td>
+    <td><%= f.text_area :introduction, class:"users-content" %></td>
   </tr>
   <tr>
     <th><%= f.label :fee, "料金" %></th>
-    <td><%= f.text_field :fee %></td>
+    <td><%= f.text_field :fee, class:"imput-box" %></td>
   </tr>
   <tr>
     <th><%= f.label :address, "住所" %></th>
-    <td><%= f.text_field :address %></td>
+    <td><%= f.text_field :address,class:"imput-box" %></td>
   </tr>
   <tr>
     <th><%= f.label :image, "ルーム画像" %></th>

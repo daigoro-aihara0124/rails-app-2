@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'users/index'
   root 'home#top'
   get 'sessions/new'
+  get 'search', to: "posts#search"
   get 'login', to: "sessions#new"
   post 'login', to: "sessions#create"
   delete 'logout', to: "sessions#destroy"

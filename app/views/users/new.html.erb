@@ -1,4 +1,7 @@
 
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+<% end %>
 
 <%= form_for @user do |f| %>
   <div class="form-input">
@@ -6,30 +9,30 @@
     <table>
         <tr>
             <th><%= f.label :name ,"ユーザー名(必須)" %></th>
-            <td><%= f.text_field :name %></td>
+            <td><%= f.text_field :name, class:"imput-box" %></td>
         </tr>
         <tr>
             <th><%= f.label :email ,"メールアドレス(必須)" %></th>
-            <td><%= f.email_field :email %></td>
+            <td><%= f.email_field :email, class:"imput-box" %></td>
         </tr>
         <tr>
             <th><%= f.label :introduction ,"自己紹介(必須)" %></th>
-            <td><%= f.text_area :introduction %></td>
+            <td><%= f.text_area :introduction, class:"users-content" %></td>
         </tr>
 
         <tr>
             <th><%= f.label :password ,"パスワード(必須)" %></th>
-            <td><%= f.password_field :password %></td>
+            <td><%= f.password_field :password, class:"imput-box" %></td>
         </tr>
         <tr>
             <th><%= f.label :password_confirmation ,"パスワード確認(必須)" %></th>
-            <td><%= f.password_field :password_confirmation %></td>
+            <td><%= f.password_field :password_confirmation, class:"imput-box" %></td>
         </tr>
     </table>
     <div>
         <ul>
             <li><%= f.submit "新規登録を完了する"%></li>
-            <li><%= link_to "アカウントをお持ちの方はログイン", login_path %></li>
+            <li><%= link_to "アカウントをお持ちの方はログイン", login_path, class: "new_account" %></li>
         </ul>
     </div>
   </div>
